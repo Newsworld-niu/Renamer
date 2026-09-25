@@ -2,7 +2,16 @@
 
 [简体中文](README.md) | English
 
-Renamer is a macOS Spaces naming utility. It displays custom names on desktop thumbnails in Mission Control and lets you search for and switch to a desktop by name. The current version is a **0.9.12 technical preview**.
+Renamer is a macOS Spaces naming utility. It displays custom names on desktop thumbnails in Mission Control and lets you search for and switch to a desktop by name. The current public version is a **0.1.0 preview**.
+
+## Download and install
+
+1. Download `Renamer-v0.1.0-arm64.zip` from [Releases](https://github.com/Newsworld-niu/Renamer/releases). GitHub's automatic “Source code” archives contain source files, not the app.
+2. Unzip the file, drag `Renamer.app` to Applications, and open it.
+3. This preview has not been notarized by Apple. If macOS blocks the first launch, try opening the app once, then select **Open Anyway** in **System Settings → Privacy & Security**. You do not need to disable macOS security protections.
+4. Grant Accessibility access when prompted so Renamer can show names in Mission Control and switch desktops.
+
+The download is for Apple silicon Macs. You do not need Xcode or the build commands below to use it.
 
 ## Features
 
