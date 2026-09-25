@@ -1,0 +1,10 @@
+.DS_Store
+/.build/
+/.swiftpm/
+/dist/
+/backups/
+/sources/
+*.log
+*.p12
+*.pem
+identity.sha1
