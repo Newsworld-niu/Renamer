@@ -50,7 +50,3 @@ open dist/Renamer.app
 遇到问题或有功能建议，欢迎在 [Issues](https://github.com/Newsworld-niu/Renamer/issues) 新建 Issue。报告问题时，请尽量写明 Renamer 与 macOS 版本、Mac 型号、复现步骤，以及预期和实际结果。截图或诊断信息也有帮助；分享日志或 `names.json` 前，请检查其中是否包含你的桌面名称等私人信息。
 
 欢迎通过 [Pull Requests](https://github.com/Newsworld-niu/Renamer/pulls) 改进代码、文档和翻译。较大的改动可以先开 Issue 讨论；提交 PR 时请说明改动原因和验证方式，并尽量让每个 PR 聚焦一件事。
-
-## 开发
-
-应用源码在 `app/Sources/`，模型检查在 `app/Tests/`。`dist/` 是本机构建产物，不纳入 Git。项目中的第三方技术来源见 `app/THIRD_PARTY_NOTICES.txt`。
