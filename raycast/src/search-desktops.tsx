@@ -1,4 +1,4 @@
-import { Action, ActionPanel, Icon, List, Toast, closeMainWindow, getPreferenceValues, open, showToast } from "@raycast/api";
+import { Action, ActionPanel, Icon, List, PopToRootType, Toast, closeMainWindow, getPreferenceValues, open, showToast } from "@raycast/api";
 import { execFile } from "node:child_process";
 import { existsSync } from "node:fs";
 import { homedir } from "node:os";
@@ -62,8 +62,11 @@ export default function SearchDesktops() {
 
   async function switchTo(desktop: Desktop) {
     try {
-      await closeMainWindow();
-      await open(`renamer-spaces://switch?target=${encodeURIComponent(desktop.id)}`);
+      // Start the URL dispatch before unloading the view; otherwise Raycast
+      // can cancel the remaining action when it returns to Root Search.
+      const switching = open(`renamer-spaces://switch?target=${encodeURIComponent(desktop.id)}`);
+      await closeMainWindow({ popToRootType: PopToRootType.Immediate });
+      await switching;
     } catch (cause) {
       await showToast({ style: Toast.Style.Failure, title: "Could not switch desktop", message: String(cause) });
     }
