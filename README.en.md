@@ -47,7 +47,7 @@ Desktop names are stored in `~/Library/Application Support/Renamer/names.json` a
 
 ## Raycast desktop search
 
-The [Raycast extension](raycast/README.md) adds a separate **Search Desktops** command to find and switch to a desktop by name. Install and run Renamer 0.1.1 or newer. The Raycast command remains available when Renamer's built-in **Enable desktop search** setting is off.
+The [Raycast extension](raycast/README.md) adds a separate **Search Desktops** command to find and switch to a desktop by name. It is [under review for the Raycast Store](https://github.com/raycast/extensions/pull/31588). Once approved and published, search for **Renamer Desktop Search** in Raycast to install it. Install Renamer 0.1.1 or newer first. The Raycast command remains available when Renamer's built-in **Enable desktop search** setting is off.
 
 ## Issues and contributing
 

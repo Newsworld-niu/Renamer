@@ -47,7 +47,7 @@ open dist/Renamer.app
 
 ## Raycast 桌面搜索
 
-[Raycast 扩展](raycast/README.md)提供独立的 **Search Desktops** 命令，可按名称查找并切换桌面。需要安装并运行 Renamer 0.1.1 或更新版本；即使关闭 Renamer 内置的“启用桌面搜索”，Raycast 命令仍可使用。
+[Raycast 扩展](raycast/README.md)提供独立的 **Search Desktops** 命令，可按名称查找并切换桌面。目前扩展已[提交 Raycast 商店审核](https://github.com/raycast/extensions/pull/31588)；审核通过并上架后，可在 Raycast 中搜索 **Renamer Desktop Search** 安装。使用前需要安装 Renamer 0.1.1 或更新版本；即使关闭 Renamer 内置的“启用桌面搜索”，Raycast 命令仍可使用。
 
 ## 反馈问题与参与贡献
 
