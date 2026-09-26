@@ -15,6 +15,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     private var searchLocalMonitor: Any?
     private var searchGlobalMonitor: Any?
     private var dismissingSearch = false
+    private var pendingRaycastTarget: String?
+    private var receivedRaycastURL = false
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         let mainMenu = NSMenu()
@@ -42,9 +44,37 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         }
         model.start()
         if model.searchEnabled { prepareSearchPanel() }
-        let loginLaunch = LaunchContext.isLoginItem(NSAppleEventManager.shared().currentAppleEvent)
+        let event = NSAppleEventManager.shared().currentAppleEvent
+        let loginLaunch = LaunchContext.isLoginItem(event)
+        let urlLaunch = event?.eventID == AEEventID(kAEGetURL)
         model.traceFocus("Launch at login=\(loginLaunch)")
-        if !loginLaunch { showSettings() }
+        if !loginLaunch && !urlLaunch && pendingRaycastTarget == nil {
+            // URL launches arrive around applicationDidFinishLaunching. Give the
+            // URL handler one turn before deciding whether to show Settings.
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [weak self] in
+                guard let self, !self.receivedRaycastURL else { return }
+                self.showSettings()
+            }
+        }
+        handlePendingRaycastTarget()
+    }
+
+    func application(_ application: NSApplication, open urls: [URL]) {
+        guard let id = urls.compactMap(RaycastBridge.targetID(from:)).first else { return }
+        receivedRaycastURL = true
+        pendingRaycastTarget = id
+        handlePendingRaycastTarget()
+    }
+
+    private func handlePendingRaycastTarget() {
+        guard let model, let id = pendingRaycastTarget else { return }
+        pendingRaycastTarget = nil
+        model.refresh()
+        guard let target = model.spaces.first(where: { $0.isOrdinary && $0.identity(bootID: model.store.bootID) == id }) else {
+            model.status = L("目标桌面已不存在或已断开。")
+            return
+        }
+        model.switchTo(target)
     }
 
     @objc func showSettings() {
@@ -148,7 +178,14 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     }
 }
 
-if CommandLine.arguments.contains("--diagnose") {
+if CommandLine.arguments.contains("--raycast-list") {
+    do {
+        FileHandle.standardOutput.write(try RaycastBridge.list())
+    } catch {
+        FileHandle.standardError.write(Data((error.localizedDescription + "\n").utf8))
+        exit(1)
+    }
+} else if CommandLine.arguments.contains("--diagnose") {
     let system = SpaceSystem()
     do {
         let spaces = try system.read()
