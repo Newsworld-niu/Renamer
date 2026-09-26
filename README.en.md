@@ -2,11 +2,11 @@
 
 [简体中文](README.md) | English
 
-Renamer is a macOS Spaces naming utility. It displays custom names on desktop thumbnails in Mission Control and lets you search for and switch to a desktop by name. The current public version is a **0.1.0 preview**.
+Renamer is a macOS Spaces naming utility. It displays custom names on desktop thumbnails in Mission Control and lets you search for and switch to a desktop by name. The current public version is a **0.1.1 preview**.
 
 ## Download and install
 
-1. Download `Renamer-v0.1.0-arm64.dmg` from [Releases](https://github.com/Newsworld-niu/Renamer/releases). GitHub's automatic “Source code” archives contain source files, not the app.
+1. Download `Renamer-v0.1.1-arm64.dmg` from [Releases](https://github.com/Newsworld-niu/Renamer/releases). GitHub's automatic “Source code” archives contain source files, not the app.
 2. Double-click the DMG, drag `Renamer.app` to Applications, eject the disk image, and open Renamer from Applications.
 3. This preview has not been notarized by Apple. If macOS blocks the first launch, try opening the app once, then select **Open Anyway** in **System Settings → Privacy & Security**. You do not need to disable macOS security protections.
 4. Grant Accessibility access when prompted so Renamer can show names in Mission Control and switch desktops.
@@ -44,6 +44,10 @@ Enter names for your desktops in the main window. The names appear on desktop th
 The **Enable desktop search** switch controls search. Turning it off disables the search entry points and global shortcut. Turning it back on restores the previously saved shortcut. Search is enabled by default on a new installation, and you can change its shortcut in the main window.
 
 Desktop names are stored in `~/Library/Application Support/Renamer/names.json` and are not uploaded automatically. Some desktops do not expose a persistent UUID. After a system restart, Renamer restores a name for such a desktop only when the identities of its neighboring desktops uniquely confirm the match. Otherwise, it keeps the old record to avoid assigning the name to the wrong desktop.
+
+## Raycast desktop search
+
+The [Raycast extension](raycast/README.md) adds a separate **Search Desktops** command to find and switch to a desktop by name. Install and run Renamer 0.1.1 or newer. The Raycast command remains available when Renamer's built-in **Enable desktop search** setting is off.
 
 ## Issues and contributing
 

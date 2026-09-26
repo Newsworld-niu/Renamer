@@ -2,11 +2,11 @@
 
 简体中文 | [English](README.en.md)
 
-Renamer 是一个用于 macOS 桌面（Space）的命名工具。它在 Mission Control 的桌面缩略图上显示自定义名称，也可以按名称搜索并切换桌面。当前公开版本为 **0.1.0 预览版**。
+Renamer 是一个用于 macOS 桌面（Space）的命名工具。它在 Mission Control 的桌面缩略图上显示自定义名称，也可以按名称搜索并切换桌面。当前公开版本为 **0.1.1 预览版**。
 
 ## 下载与安装
 
-1. 到 [Releases](https://github.com/Newsworld-niu/Renamer/releases) 下载 `Renamer-v0.1.0-arm64.dmg`。
+1. 到 [Releases](https://github.com/Newsworld-niu/Renamer/releases) 下载 `Renamer-v0.1.1-arm64.dmg`。
 2. 双击打开 DMG，把 `Renamer.app` 拖到「Applications / 应用程序」，推出磁盘映像后从「应用程序」打开 Renamer。
 3. 此预览版尚未经过 Apple 公证。如果 macOS 阻止首次打开，先尝试打开一次，再到「系统设置 → 隐私与安全性」点击「仍要打开」。无需关闭系统安全保护。
 4. 按应用提示授予「辅助功能」权限，才能在 Mission Control 显示名称和切换桌面。
@@ -44,6 +44,10 @@ open dist/Renamer.app
 主窗口中的“启用桌面搜索”控制搜索功能。关闭时，搜索入口和全局快捷键都会停用；重新开启后会恢复之前保存的快捷键。首次安装默认开启，快捷键可在主窗口修改。
 
 名称数据位于 `~/Library/Application Support/Renamer/names.json`，不会自动上传。
+
+## Raycast 桌面搜索
+
+[Raycast 扩展](raycast/README.md)提供独立的 **Search Desktops** 命令，可按名称查找并切换桌面。需要安装并运行 Renamer 0.1.1 或更新版本；即使关闭 Renamer 内置的“启用桌面搜索”，Raycast 命令仍可使用。
 
 ## 反馈问题与参与贡献
 

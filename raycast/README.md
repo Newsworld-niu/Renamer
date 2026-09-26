@@ -1,15 +1,15 @@
-# Renamer for Raycast
+# Renamer Desktop Search
 
-Search for a named macOS desktop in Raycast and press Return to switch to it. This extension needs Renamer 0.1.1 or newer installed and running on the same Mac.
+Search desktops you've named with [Renamer](https://github.com/Newsworld-niu/Renamer), then press Return to switch. The checkmark marks the current desktop on each display.
 
-## Local setup
+## Setup
 
-1. Build Renamer from the project root with `zsh app/build.sh` and install the resulting `dist/Renamer.app` in `/Applications`. Launch Renamer and grant Accessibility permission if prompted.
-2. From this `raycast` directory, run `npm install` and `npm run dev`. Raycast's **Search Desktops** command will appear in the Development section. You can stop the development server after the command has been imported.
-3. If Renamer is installed somewhere else, set **Renamer App Path** in the extension preferences to the full path of `Renamer.app`.
+1. Install [Renamer 0.1.1 or newer](https://github.com/Newsworld-niu/Renamer/releases) in `/Applications`. Renamer supports Apple silicon Macs running macOS 14 or later. Launch it once and grant Accessibility access in macOS System Settings when prompted.
+2. Name your desktops in Renamer. In Raycast, open **Search Desktops** and type a name.
+3. If you installed Renamer elsewhere, set **Renamer App Path** in this extension's preferences to the full path of `Renamer.app`.
 
-The command asks Renamer for a fresh list of ordinary desktops, then sends the selected desktop identity back to Renamer. Renamer verifies that the desktop still exists before switching. The **Enable desktop search** switch controls Renamer's built-in search and shortcut; this Raycast command remains available independently. Names stay on this Mac; the extension makes no network requests.
+The command reads the desktop list directly from the installed app, so it can show names even when Renamer is closed. Switching opens Renamer when needed. Renamer's **Enable desktop search** setting controls its own search window and shortcut; it does not disable this Raycast command. Desktop names remain on your Mac. The extension makes no network requests.
 
-## Checks
+## Development
 
-Run `npm run build` and `npm run lint` from this directory. The app's Swift build must also succeed. For a manual check, search for a desktop, switch to it, rename it in Renamer, then reopen the Raycast command and confirm the new name appears. Turn off Renamer's built-in desktop search and confirm the Raycast command still works.
+This extension is maintained in the [Renamer repository](https://github.com/Newsworld-niu/Renamer/tree/main/raycast). From its `raycast` directory, run `npm ci`, `npm run dev`, `npm run build`, and `npm run lint`. For a local app build, see the repository's build instructions.
