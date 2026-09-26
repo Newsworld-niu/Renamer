@@ -45,6 +45,12 @@ The **Enable desktop search** switch controls search. Turning it off disables th
 
 Desktop names are stored in `~/Library/Application Support/Renamer/names.json` and are not uploaded automatically. Some desktops do not expose a persistent UUID. After a system restart, Renamer restores a name for such a desktop only when the identities of its neighboring desktops uniquely confirm the match. Otherwise, it keeps the old record to avoid assigning the name to the wrong desktop.
 
+## Issues and contributing
+
+If you find a bug or have a feature idea, please open an [Issue](https://github.com/Newsworld-niu/Renamer/issues). Include the Renamer and macOS versions, your Mac model, steps to reproduce, and what you expected versus what happened. Screenshots or diagnostics can help. Before sharing logs or `names.json`, check them for personal information such as your desktop names.
+
+Code, documentation, and translation contributions are welcome through [Pull Requests](https://github.com/Newsworld-niu/Renamer/pulls). For larger changes, consider opening an Issue first. In your PR, explain why you made the change and how you checked it, and keep each PR focused on one topic.
+
 ## Development
 
 Application source is in `app/Sources/`, and model checks are in `app/Tests/`. `dist/` contains local build output and is excluded from Git. See `app/THIRD_PARTY_NOTICES.txt` for third party technique references.
